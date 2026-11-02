@@ -1,0 +1,205 @@
+/* ==========================================================================
+   MAISON DANS NOS PRÉS — Vente Directe de Viande Bovine & Ovine du Limousin
+   Direction Artistique & Ergonomie E-Commerce 2026
+   ========================================================================== */
+
+:root {
+  --color-noir: #121212;
+  --color-anthracite: #1a1a19;
+  --color-bordeaux-cuir: #2b1216;
+  --color-stone-dark: #262523;
+  --color-taupe: #6b665f;
+  --color-taupe-light: #9c978f;
+  --color-craie: #f7f5f0;
+  --color-blanc: #ffffff;
+  --color-border: #e3dfd5;
+  --color-bronze: #8c6d3b;
+  --color-bronze-light: #c49a52;
+  --color-rouge-viande: #8f2334;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--color-craie);
+  color: var(--color-noir);
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-serif {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+/* Typographie & Titrages */
+.tracking-editorial {
+  letter-spacing: 0.16em;
+}
+
+/* Cartes Produits */
+.product-card {
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  border-color: #beb8ab;
+  box-shadow: 0 16px 36px -8px rgba(18, 18, 18, 0.1), 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+/* Image Container avec ratio constant */
+.product-image-wrap {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  background-color: #ebe7de;
+  overflow: hidden;
+}
+
+.product-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.product-card:hover .product-image-wrap img {
+  transform: scale(1.04);
+}
+
+/* Badges Produits */
+.badge-meat {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(18, 18, 18, 0.92);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.badge-price-kg {
+  display: inline-flex;
+  align-items: center;
+  background: #ffffff;
+  color: #121212;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid #dcd7cc;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+/* Boutons */
+.btn-primary {
+  background-color: #121212;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 12px 20px;
+  border-radius: 6px;
+  border: 1px solid #121212;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background-color: #262523;
+  border-color: #262523;
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #121212;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 12px 20px;
+  border-radius: 6px;
+  border: 1px solid #121212;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+/* Drawer & Modals */
+.cart-drawer-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  max-width: 440px;
+  background: #ffffff;
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cart-drawer-container.open {
+  transform: translateX(0);
+}
+
+.modal-backdrop-custom {
+  position: fixed;
+  inset: 0;
+  background: rgba(18, 18, 18, 0.65);
+  backdrop-filter: blur(4px);
+  z-index: 9998;
+  display: none;
+}
+
+.modal-backdrop-custom.open {
+  display: block;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #efebe2;
+}
+::-webkit-scrollbar-thumb {
+  background: #c2bcb0;
+  border-radius: 3px;
+}
