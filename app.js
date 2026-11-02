@@ -64,7 +64,7 @@ function getMeatFallbackSvg(productId, title, weight) {
   return `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500"><rect width="800" height="500" fill="%23141413"/><rect x="16" y="16" width="768" height="468" fill="none" stroke="%232c2a27" stroke-width="1.5"/>${illustration}<text x="400" y="110" font-family="Georgia, serif" font-size="12" fill="${badgeColor}" text-anchor="middle" letter-spacing="4" font-weight="bold">${categoryLabel}</text><text x="400" y="380" font-family="Georgia, serif" font-size="24" fill="%23ffffff" text-anchor="middle" font-weight="bold">${encodeURIComponent(title)}</text><text x="400" y="415" font-family="sans-serif" font-size="14" fill="%23b8b3a5" text-anchor="middle">Découpe Sous Vide • ${weight} kg net • GAEC du Mas Ferrat (87)</text></svg>`;
 }
 
-// Catalogue Produits Fidèle aux Découpes Réelles
+// Catalogue Produits Fidèle aux Découpes Réelles (Fichiers locaux 100% fiables)
 const PRODUCTS = [
   {
     id: "colis-prestige-5kg",
@@ -76,8 +76,8 @@ const PRODUCTS = [
     price: 135.00,
     badge: "Sélection Bouchère",
     badgeType: "red",
-    // Image réaliste : artisan boucher préparant l'assortiment de viandes rouges sur billot
-    image: "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=800&q=80",
+    // Image locale garantie : morceaux et découpes de bœuf frais
+    image: "assets/colis-boeuf-5kg.jpg",
     description: "La formule idéale pour découvrir la pure race Limousine : 1 rôti ficelé main, 4 pavés de rumsteak et faux-filets tendres, 6 steaks hachés façon bouchère, 1 bourguignon prêt à mijoter et 4 steaks minute.",
     contents: [
       "1 Rôti de bœuf tendre ficelé à la main (env. 900g)",
@@ -100,8 +100,8 @@ const PRODUCTS = [
     price: 235.00,
     badge: "Le Choix des Familles",
     badgeType: "gold",
-    // Image réaliste : généreuse planche de viandes de bœuf avec entrecôtes et rôtis
-    image: "https://images.unsplash.com/photo-1603048588665-791ca8aea617?auto=format&fit=crop&w=800&q=80",
+    // Image locale garantie : planche complète du boucher avec viandes variées
+    image: "assets/colis-boeuf-10kg.jpg",
     description: "L'assortiment complet pour approvisionner le foyer : 2 rôtis tendres, 1 belle côte de bœuf persillée (ou 2 entrecôtes épaisses), 8 pavés de rumsteak, 12 steaks hachés bouchers, 2 sachets de bourguignon et 1 rosbif.",
     contents: [
       "2 Rôtis de bœuf tendres ficelés (2x env. 900g)",
@@ -125,8 +125,8 @@ const PRODUCTS = [
     price: 119.00,
     badge: "Agneau de Terroir",
     badgeType: "dark",
-    // Image réaliste : découpes d'agneau fraîches préparées (gigot et côtelettes)
-    image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80",
+    // Image locale garantie : véritables découpes d'agneau et côtelettes fraîches
+    image: "assets/colis-agneau.jpg",
     description: "Notre cheptel ovin pâture librement sur nos parcours herbagers naturels. La viande offre une chair délicatement rosée, d'une grande finesse et pauvre en gras de couverture, sans le goût fort des moutons d'importation.",
     contents: [
       "1 Gigot d'agneau entier ou tranché au choix (env. 1.8 kg)",
@@ -148,8 +148,8 @@ const PRODUCTS = [
     price: 42.00,
     badge: "Pièce Maîtresse",
     badgeType: "red",
-    // Image réaliste : splendide côte de bœuf avec os et fleur de sel au romarin
-    image: "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=800&q=80",
+    // Image locale garantie : véritable côte de bœuf avec os et persillé authentique
+    image: "assets/cote-de-boeuf.jpg",
     description: "La star des amateurs de viande rouge. Découpée dans le train de côtes avec son os long, épaisseur généreuse de 5 cm. Persillé intramusculaire fin typique de la Limousine pour des saveurs intenses de noisette.",
     contents: [
       "1 Côte de bœuf de 1,2 kg sous vide individuel haute protection"
@@ -168,8 +168,8 @@ const PRODUCTS = [
     price: 24.00,
     badge: "Grillade d'Artisan",
     badgeType: "dark",
-    // Image réaliste : steaks de bœuf frais épais parés pour la cuisson
-    image: "https://images.unsplash.com/photo-1588168333986-5078d3ae3976?auto=format&fit=crop&w=800&q=80",
+    // Image locale garantie : véritable steak de bœuf cru épais assaisonné
+    image: "assets/paves-rumsteak.jpg",
     description: "Les morceaux de grillade les plus réputés : 2 pavés de rumsteak et 2 faux-filets persillés. Tendreté absolue, parés au couteau sans déchet pour une saisie rapide à la poêle.",
     contents: [
       "2 Pavés de rumsteak épais (2x 200g)",
@@ -189,8 +189,8 @@ const PRODUCTS = [
     price: 26.60,
     badge: "Haute Boucherie",
     badgeType: "gold",
-    // Image réaliste : agneaux élevés en plein air dans les prés du Limousin
-    image: "https://images.unsplash.com/photo-1484557052118-f32bd25b45b5?auto=format&fit=crop&w=800&q=80",
+    // Image locale garantie : véritable carré d'agneau cru avec côtes manchonnées
+    image: "assets/carre-agneau.jpg",
     description: "Le summum de la gastronomie ovine : 8 côtes premières manchonnées à la main au couteau (os dégagés). Chair tendre et parfumée, idéale rôtie au four en croûte d'herbes.",
     contents: [
       "1 Carré de 8 côtes premières manchonnées à la main (env. 700g)"
