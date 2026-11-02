@@ -2,17 +2,69 @@
 // MAISON DANS NOS PRÉS — SAVOIR-FAIRE BOUCHER & E-COMMERCE EN CIRCUIT COURT
 // ==========================================================================
 
-// Générateur vectoriel SVG haute résolution (Garantit 100% d'uptime visuel)
-function getMeatFallbackSvg(type, title, weight) {
-  const isBoeuf = type === 'limousine';
-  const animalLabel = isBoeuf ? 'BŒUF DE PURE RACE LIMOUSINE' : 'MOUTON & AGNEAU FERMIER DU LIMOUSIN';
-  const colorBg = isBoeuf ? '%23181817' : '%231e211e';
-  const accentColor = isBoeuf ? '%23c29b53' : '%23a6b89e';
+// Générateur vectoriel SVG haute résolution sur-mesure pour chaque découpe
+// Garantit une représentation fidèle et 100% d'uptime même hors ligne ou avec bloqueur de pub
+function getMeatFallbackSvg(productId, title, weight) {
+  let illustration = '';
+  let badgeColor = '%23c29b53';
+  let categoryLabel = 'BŒUF DE PURE RACE LIMOUSINE';
 
-  return `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500"><rect width="800" height="500" fill="${colorBg}"/><circle cx="400" cy="220" r="140" fill="none" stroke="${accentColor}" stroke-width="1.5" stroke-dasharray="6 6" opacity="0.35"/><path d="M340 230 C340 180, 460 180, 460 230 C460 270, 410 280, 400 300 C390 280, 340 270, 340 230 Z" fill="${accentColor}" opacity="0.25"/><text x="400" y="160" font-family="Georgia, serif" font-size="13" fill="${accentColor}" text-anchor="middle" letter-spacing="4" font-weight="bold">${animalLabel}</text><text x="400" y="240" font-family="Georgia, serif" font-size="28" fill="%23ffffff" text-anchor="middle" font-weight="bold">${encodeURIComponent(title)}</text><text x="400" y="280" font-family="sans-serif" font-size="15" fill="%23d0ccc2" text-anchor="middle">Découpe Bouchère Sous Vide • ${weight} kg net • Élevage Haute-Vienne</text><rect x="310" y="320" width="180" height="34" rx="4" fill="%23ffffff" fill-opacity="0.1" stroke="${accentColor}" stroke-width="1"/><text x="400" y="342" font-family="sans-serif" font-size="12" fill="%23ffffff" text-anchor="middle" font-weight="bold">CIRCUIT 100% DIRECT ÉLEVEUR</text></svg>`;
+  if (productId.includes('cote-boeuf')) {
+    categoryLabel = 'PIÈCE MAÎTRESSE • SUR OS (14-21 JOURS)';
+    badgeColor = '%238a1827';
+    // Illustration Côte de Bœuf avec os
+    illustration = `
+      <path d="M280 260 C260 210, 310 160, 420 170 C510 180, 540 250, 490 300 C430 350, 310 320, 280 260 Z" fill="%238a1827" opacity="0.6"/>
+      <path d="M420 170 C470 120, 560 90, 590 130 C560 170, 490 190, 420 170 Z" fill="%23e8e2d5" opacity="0.8"/>
+      <circle cx="380" cy="240" r="18" fill="%23ffffff" opacity="0.25"/>
+    `;
+  } else if (productId.includes('carre-agneau')) {
+    categoryLabel = 'HAUTE BOUCHERIE • CÔTES MANCHONNÉES';
+    badgeColor = '%23c29b53';
+    // Illustration Carré d'agneau avec côtes
+    illustration = `
+      <rect x="300" y="240" width="200" height="70" rx="8" fill="%238a1827" opacity="0.55"/>
+      <line x1="330" y1="240" x2="310" y2="140" stroke="%23e8e2d5" stroke-width="8" stroke-linecap="round"/>
+      <line x1="370" y1="240" x2="360" y2="140" stroke="%23e8e2d5" stroke-width="8" stroke-linecap="round"/>
+      <line x1="410" y1="240" x2="410" y2="140" stroke="%23e8e2d5" stroke-width="8" stroke-linecap="round"/>
+      <line x1="450" y1="240" x2="460" y2="140" stroke="%23e8e2d5" stroke-width="8" stroke-linecap="round"/>
+    `;
+  } else if (productId.includes('paves')) {
+    categoryLabel = 'GRILLADES AU COUTEAU • RUMSTEAK & FAUX-FILET';
+    badgeColor = '%238a1827';
+    // Illustration 2 pavés de steak
+    illustration = `
+      <rect x="290" y="210" width="105" height="90" rx="10" fill="%238a1827" opacity="0.65"/>
+      <rect x="415" y="210" width="105" height="90" rx="10" fill="%238a1827" opacity="0.65"/>
+      <line x1="310" y1="230" x2="370" y2="280" stroke="%23ffffff" stroke-width="2" opacity="0.3"/>
+      <line x1="435" y1="230" x2="495" y2="280" stroke="%23ffffff" stroke-width="2" opacity="0.3"/>
+    `;
+  } else if (productId.includes('agneau')) {
+    categoryLabel = 'AGNEAU DE TERROIR • HAUTE-VIENNE';
+    badgeColor = '%23a6b89e';
+    // Illustration gigot et côte
+    illustration = `
+      <ellipse cx="400" cy="245" rx="110" ry="75" fill="%238a1827" opacity="0.55"/>
+      <path d="M490 230 L560 170" stroke="%23e8e2d5" stroke-width="12" stroke-linecap="round"/>
+    `;
+  } else {
+    // Colis de bœuf (caissette artisanale)
+    categoryLabel = 'ASSORTIMENT FERMIER • DÉCOUPE VARIÉE';
+    badgeColor = '%23c29b53';
+    illustration = `
+      <rect x="290" y="200" width="220" height="110" rx="6" fill="%23ffffff" fill-opacity="0.08" stroke="%23c29b53" stroke-width="2"/>
+      <rect x="310" y="220" width="55" height="40" rx="4" fill="%238a1827" opacity="0.7"/>
+      <rect x="375" y="220" width="55" height="40" rx="4" fill="%238a1827" opacity="0.7"/>
+      <rect x="440" y="220" width="55" height="40" rx="4" fill="%238a1827" opacity="0.7"/>
+      <rect x="340" y="270" width="60" height="30" rx="4" fill="%238a1827" opacity="0.6"/>
+      <rect x="410" y="270" width="60" height="30" rx="4" fill="%238a1827" opacity="0.6"/>
+    `;
+  }
+
+  return `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500"><rect width="800" height="500" fill="%23141413"/><rect x="16" y="16" width="768" height="468" fill="none" stroke="%232c2a27" stroke-width="1.5"/>${illustration}<text x="400" y="110" font-family="Georgia, serif" font-size="12" fill="${badgeColor}" text-anchor="middle" letter-spacing="4" font-weight="bold">${categoryLabel}</text><text x="400" y="380" font-family="Georgia, serif" font-size="24" fill="%23ffffff" text-anchor="middle" font-weight="bold">${encodeURIComponent(title)}</text><text x="400" y="415" font-family="sans-serif" font-size="14" fill="%23b8b3a5" text-anchor="middle">Découpe Sous Vide • ${weight} kg net • GAEC du Mas Ferrat (87)</text></svg>`;
 }
 
-// Catalogue Produits Haut de Gamme (Race Limousine & Agneau de Terroir)
+// Catalogue Produits Fidèle aux Découpes Réelles
 const PRODUCTS = [
   {
     id: "colis-prestige-5kg",
@@ -24,8 +76,9 @@ const PRODUCTS = [
     price: 135.00,
     badge: "Sélection Bouchère",
     badgeType: "red",
-    image: "https://images.unsplash.com/photo-1603048588665-791ca8aea617?auto=format&fit=crop&w=800&q=80",
-    description: "La quintessence de l'élevage Limousin en circuit court. Des pièces nobles sélectionnées, parées et découpées au couteau par notre artisan boucher après 14 jours de maturation sur carcasse.",
+    // Image réaliste : artisan boucher préparant l'assortiment de viandes rouges sur billot
+    image: "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=800&q=80",
+    description: "La formule idéale pour découvrir la pure race Limousine : 1 rôti ficelé main, 4 pavés de rumsteak et faux-filets tendres, 6 steaks hachés façon bouchère, 1 bourguignon prêt à mijoter et 4 steaks minute.",
     contents: [
       "1 Rôti de bœuf tendre ficelé à la main (env. 900g)",
       "4 Pavés de rumsteak ou faux-filets épais (2 sachets de 2)",
@@ -41,17 +94,18 @@ const PRODUCTS = [
     id: "colis-reserve-10kg",
     category: "limousine",
     title: "Colis Grande Réserve Bœuf Limousin (10 kg)",
-    subtitle: "Le format familial de référence (-13% d'économie au kilo)",
+    subtitle: "Le format familial le plus complet (-13% d'économie au kilo)",
     weight: 10,
     pricePerKg: 23.50,
     price: 235.00,
     badge: "Le Choix des Familles",
     badgeType: "gold",
-    image: "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=800&q=80",
-    description: "Le colis complet pour approvisionner sereinement le foyer en viande rouge artisanale d'exception. De la belle côte de bœuf persillée aux rôtis dominicaux et mijotés fondants.",
+    // Image réaliste : généreuse planche de viandes de bœuf avec entrecôtes et rôtis
+    image: "https://images.unsplash.com/photo-1603048588665-791ca8aea617?auto=format&fit=crop&w=800&q=80",
+    description: "L'assortiment complet pour approvisionner le foyer : 2 rôtis tendres, 1 belle côte de bœuf persillée (ou 2 entrecôtes épaisses), 8 pavés de rumsteak, 12 steaks hachés bouchers, 2 sachets de bourguignon et 1 rosbif.",
     contents: [
       "2 Rôtis de bœuf tendres ficelés (2x env. 900g)",
-      "1 Belle côte de bœuf ou 2 entrecôtes épaisses persillées",
+      "1 Belle côte de bœuf persillée (ou 2 entrecôtes épaisses)",
       "8 Pavés de rumsteak & faux-filets parés au couteau",
       "12 Steaks hachés pur bœuf façon bouchère (6x 2 pièces)",
       "2 Sachets de morceaux à mijoter / bourguignon (2x 800g)",
@@ -71,8 +125,9 @@ const PRODUCTS = [
     price: 119.00,
     badge: "Agneau de Terroir",
     badgeType: "dark",
+    // Image réaliste : découpes d'agneau fraîches préparées (gigot et côtelettes)
     image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80",
-    description: "Issu de cheptels ovins élevés en liberté sur parcours herbagers naturels. Une chair délicatement rosée, d'une grande finesse et pauvre en gras de couverture, sans le goût fort des moutons d'importation.",
+    description: "Notre cheptel ovin pâture librement sur nos parcours herbagers naturels. La viande offre une chair délicatement rosée, d'une grande finesse et pauvre en gras de couverture, sans le goût fort des moutons d'importation.",
     contents: [
       "1 Gigot d'agneau entier ou tranché au choix (env. 1.8 kg)",
       "1 Épaule d'agneau prête à rôtir (env. 1.1 kg)",
@@ -87,14 +142,15 @@ const PRODUCTS = [
     id: "cote-boeuf-limousine-12kg",
     category: "limousine",
     title: "Côte de Bœuf Limousine d'Exception (1,2 kg)",
-    subtitle: "Maturation 21 jours en chambre sèche — Pièce numérotée",
+    subtitle: "Maturation 21 jours en chambre sèche — Pièce sur os",
     weight: 1.2,
     pricePerKg: 35.00,
     price: 42.00,
     badge: "Pièce Maîtresse",
     badgeType: "red",
-    image: "https://images.unsplash.com/photo-1546445317-29f4545e9d53?auto=format&fit=crop&w=800&q=80",
-    description: "La star des tables gastronomiques. Découpée dans les premières côtes du train de côtes, avec os long préservé. Persillé intramusculaire fin pour des arômes de noisette beurrée.",
+    // Image réaliste : splendide côte de bœuf avec os et fleur de sel au romarin
+    image: "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=800&q=80",
+    description: "La star des amateurs de viande rouge. Découpée dans le train de côtes avec son os long, épaisseur généreuse de 5 cm. Persillé intramusculaire fin typique de la Limousine pour des saveurs intenses de noisette.",
     contents: [
       "1 Côte de bœuf de 1,2 kg sous vide individuel haute protection"
     ],
@@ -112,14 +168,15 @@ const PRODUCTS = [
     price: 24.00,
     badge: "Grillade d'Artisan",
     badgeType: "dark",
-    image: "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=800&q=80",
-    description: "Les morceaux les plus tendres du bœuf pour vos déjeuners et dîners quotidiens. Zéro déchet, fibres courtes et jutosité incomparable.",
+    // Image réaliste : steaks de bœuf frais épais parés pour la cuisson
+    image: "https://images.unsplash.com/photo-1588168333986-5078d3ae3976?auto=format&fit=crop&w=800&q=80",
+    description: "Les morceaux de grillade les plus réputés : 2 pavés de rumsteak et 2 faux-filets persillés. Tendreté absolue, parés au couteau sans déchet pour une saisie rapide à la poêle.",
     contents: [
       "2 Pavés de rumsteak épais (2x 200g)",
       "2 Faux-filets persillés (2x 200g)"
     ],
     maturation: "Maturation 14 jours",
-    chefTip: "Cuisson rapide : 2 minutes par face à feu vif avec une noisette de beurre clarifié.",
+    chefTip: "Cuisson vive : 2 minutes par face dans une poêle très chaude avec une noisette de beurre fondu.",
     storage: "Conditionné par sachet sous-vide de 2 pièces."
   },
   {
@@ -132,13 +189,14 @@ const PRODUCTS = [
     price: 26.60,
     badge: "Haute Boucherie",
     badgeType: "gold",
+    // Image réaliste : agneaux élevés en plein air dans les prés du Limousin
     image: "https://images.unsplash.com/photo-1484557052118-f32bd25b45b5?auto=format&fit=crop&w=800&q=80",
-    description: "Le joyau de la tradition bouchère française : les os des côtes sont dégagés et manchonnés à la main au couteau. Prêt à rôtir entier.",
+    description: "Le summum de la gastronomie ovine : 8 côtes premières manchonnées à la main au couteau (os dégagés). Chair tendre et parfumée, idéale rôtie au four en croûte d'herbes.",
     contents: [
       "1 Carré de 8 côtes premières manchonnées à la main (env. 700g)"
     ],
-    maturation: "Découpe fraîche",
-    chefTip: "Rôtir 15 minutes à 200°C en croûte de moutarde et chapelure d'herbes de Provence.",
+    maturation: "Découpe fraîche après ressuage",
+    chefTip: "Rôtir 15 minutes à 200°C avec une croûte de chapelure, beurre et persil frais.",
     storage: "Sous vide individuel. DLC 18 jours au frais."
   }
 ];
@@ -151,7 +209,7 @@ const BUTCHER_CUTS_DATA = {
     description: "Découpées dans les muscles les plus nobles du train de côtes et de la cuisse (faux-filet, rumsteak, entrecôte, bavette). Ces morceaux bénéficient d'une maturation de 14 jours minimum pour casser la rigidité des fibres musculaires.",
     idealCooking: "À feu vif, 2 à 3 min par face. Température à cœur : 50°C (bleu) à 54°C (saignant).",
     restingTip: "Règle d'or du maître boucher : toujours laisser reposer la viande cuite sur une assiette tiède 3 à 5 minutes pour redistribuer le jus de cuisson dans toute la pièce.",
-    pieces: ["Faux-filet", "Entrecôte persillée", "Pavé de Rumsteak", "Bavette d'aloyau", "Côte de bœuf sur os"]
+    pieces: ["Faux-filet persillé", "Entrecôte épaisse", "Pavé de Rumsteak", "Bavette d'aloyau", "Côte de bœuf sur os"]
   },
   rotis: {
     title: "Les Pièces à Rôtir & au Four",
@@ -230,7 +288,7 @@ function renderProducts() {
     : PRODUCTS.filter(p => p.category === activeFilter);
 
   grid.innerHTML = filtered.map(prod => {
-    const fallbackSrc = getMeatFallbackSvg(prod.category, prod.title, prod.weight);
+    const fallbackSrc = getMeatFallbackSvg(prod.id, prod.title, prod.weight);
     const badgeClass = prod.badgeType === 'red' ? 'badge-tag-red' : prod.badgeType === 'gold' ? 'badge-tag-gold' : 'badge-tag-dark';
 
     return `
@@ -313,7 +371,7 @@ function renderProducts() {
   }).join('');
 }
 
-// 3. Guide de la Découpe Bouchère (Interactive Butcher Cuts Guide)
+// 3. Guide de la Découpe Bouchère
 function renderButcherCuts(categoryKey) {
   const data = BUTCHER_CUTS_DATA[categoryKey];
   if (!data) return;
@@ -404,11 +462,10 @@ function calculateTotals() {
   return { totalItems, totalWeight, subtotal, deliveryFee, grandTotal };
 }
 
-// 6. Mise à jour complète de l'interface du Panier
+// 6. Mise à jour de l'interface du Panier
 function updateCartUI() {
   const { totalItems, totalWeight, subtotal, deliveryFee, grandTotal } = calculateTotals();
 
-  // Badges
   const countBadge = document.getElementById('cart-count-badge');
   if (countBadge) {
     countBadge.textContent = totalItems;
@@ -435,7 +492,7 @@ function updateCartUI() {
               src="${item.image}" 
               alt="${item.title}" 
               referrerpolicy="no-referrer"
-              onerror="this.onerror=null; this.src='${getMeatFallbackSvg(item.category, item.title, item.weight)}';" 
+              onerror="this.onerror=null; this.src='${getMeatFallbackSvg(item.id, item.title, item.weight)}';" 
               style="width: 100%; height: 100%; object-fit: cover;"
             />
           </div>
@@ -457,7 +514,6 @@ function updateCartUI() {
     }
   }
 
-  // Valeurs numériques
   const subtotalEl = document.getElementById('cart-subtotal');
   const weightEl = document.getElementById('cart-weight');
   const deliveryEl = document.getElementById('cart-delivery-cost');
@@ -498,7 +554,7 @@ function closeCartDrawer() {
   }
 }
 
-// 8. Choix Livraison
+// 8. Choix Mode Livraison
 function setDeliveryMode(mode) {
   selectedDeliveryMode = mode;
   document.querySelectorAll('.delivery-mode-btn').forEach(btn => {
@@ -546,7 +602,7 @@ function triggerToast(message) {
   }, 2600);
 }
 
-// 11. Modal de Commande
+// 11. Modal Commande
 function openCheckoutModal() {
   const { totalItems, grandTotal, totalWeight } = calculateTotals();
   if (totalItems === 0) {
