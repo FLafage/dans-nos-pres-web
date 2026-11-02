@@ -1,121 +1,115 @@
 /* ==========================================================================
-   MAISON DANS NOS PRÉS — Vente Directe de Viande Bovine & Ovine du Limousin
-   Direction Artistique & Ergonomie E-Commerce 2026
+   MAISON DANS NOS PRÉS — IDENTITÉ BOUCHÈRE D'EXCEPTION (STYLE BIGARD & BEAUVALLET)
+   Architecture & Direction Artistique Professionnelle
    ========================================================================== */
 
 :root {
-  --color-noir: #121212;
+  --color-noir-profond: #101010;
   --color-anthracite: #1a1a19;
-  --color-bordeaux-cuir: #2b1216;
-  --color-stone-dark: #262523;
-  --color-taupe: #6b665f;
-  --color-taupe-light: #9c978f;
-  --color-craie: #f7f5f0;
+  --color-ardoise: #262524;
+  --color-rouge-boucher: #8a1827;       /* Crimson boucher puissant signature */
+  --color-rouge-hover: #a31e30;
+  --color-rouge-subtil: rgba(138, 24, 39, 0.08);
+  --color-bronze-or: #c29b53;           /* Or mat / bronze excellence */
+  --color-craie-pure: #f8f6f0;          /* Fond minéral noble */
   --color-blanc: #ffffff;
-  --color-border: #e3dfd5;
-  --color-bronze: #8c6d3b;
-  --color-bronze-light: #c49a52;
-  --color-rouge-viande: #8f2334;
+  --color-gris-texte: #45423e;
+  --color-gris-clair: #6e6a64;
+  --color-border: #e2ded5;
+  --color-border-dark: #2e2d2b;
 }
 
 * {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background-color: var(--color-craie);
-  color: var(--color-noir);
+  background-color: var(--color-craie-pure);
+  color: var(--color-noir-profond);
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
 }
 
 .font-serif {
   font-family: 'Cormorant Garamond', Georgia, serif;
 }
 
-/* Typographie & Titrages */
-.tracking-editorial {
-  letter-spacing: 0.16em;
-}
-
-/* Cartes Produits */
-.product-card {
-  background: #ffffff;
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  overflow: hidden;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.product-card:hover {
-  transform: translateY(-4px);
-  border-color: #beb8ab;
-  box-shadow: 0 16px 36px -8px rgba(18, 18, 18, 0.1), 0 4px 12px rgba(0, 0, 0, 0.04);
-}
-
-/* Image Container avec ratio constant */
-.product-image-wrap {
-  position: relative;
-  width: 100%;
-  height: 250px;
-  background-color: #ebe7de;
-  overflow: hidden;
-}
-
-.product-image-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.product-card:hover .product-image-wrap img {
-  transform: scale(1.04);
-}
-
-/* Badges Produits */
-.badge-meat {
-  display: inline-flex;
-  align-items: center;
-  background: rgba(18, 18, 18, 0.92);
-  color: #ffffff;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+/* Typographie & Titrages Institutionnels */
+.tracking-caps {
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  padding: 4px 10px;
-  border-radius: 4px;
 }
 
-.badge-price-kg {
-  display: inline-flex;
-  align-items: center;
-  background: #ffffff;
-  color: #121212;
-  font-size: 11px;
-  font-weight: 700;
-  padding: 4px 10px;
-  border-radius: 4px;
-  border: 1px solid #dcd7cc;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+.tracking-wide {
+  letter-spacing: 0.08em;
 }
 
-/* Boutons */
-.btn-primary {
-  background-color: #121212;
-  color: #ffffff;
-  font-weight: 700;
+/* Grille & Conteneurs */
+.site-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Header & Nav */
+.header-institutionnel {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid var(--color-noir-profond);
+}
+
+.nav-link-item {
+  text-decoration: none;
+  color: var(--color-noir-profond);
   font-size: 12px;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  padding: 12px 20px;
-  border-radius: 6px;
-  border: 1px solid #121212;
+  padding: 8px 0;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.nav-link-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: var(--color-rouge-boucher);
+  transition: width 0.25s ease;
+}
+
+.nav-link-item:hover {
+  color: var(--color-rouge-boucher);
+}
+
+.nav-link-item:hover::after {
+  width: 100%;
+}
+
+/* Boutons d'Action */
+.btn-boucher {
+  background-color: var(--color-rouge-boucher);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 13px 24px;
+  border-radius: 3px;
+  border: 1px solid var(--color-rouge-boucher);
   cursor: pointer;
   transition: all 0.2s ease;
   display: inline-flex;
@@ -125,25 +119,46 @@ body {
   text-decoration: none;
 }
 
-.btn-primary:hover {
-  background-color: #262523;
-  border-color: #262523;
+.btn-boucher:hover {
+  background-color: var(--color-rouge-hover);
+  border-color: var(--color-rouge-hover);
+  box-shadow: 0 4px 14px rgba(138, 24, 39, 0.3);
 }
 
-.btn-primary:active {
-  transform: scale(0.98);
-}
-
-.btn-secondary {
-  background-color: transparent;
-  color: #121212;
-  font-weight: 700;
+.btn-noir {
+  background-color: var(--color-noir-profond);
+  color: #ffffff;
   font-size: 12px;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 12px 20px;
-  border-radius: 6px;
-  border: 1px solid #121212;
+  letter-spacing: 0.12em;
+  padding: 13px 24px;
+  border-radius: 3px;
+  border: 1px solid var(--color-noir-profond);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.btn-noir:hover {
+  background-color: #2b2b2a;
+  border-color: #2b2b2a;
+}
+
+.btn-contour {
+  background-color: transparent;
+  color: var(--color-noir-profond);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 12px 22px;
+  border-radius: 3px;
+  border: 1px solid var(--color-noir-profond);
   cursor: pointer;
   transition: all 0.2s ease;
   display: inline-flex;
@@ -152,12 +167,101 @@ body {
   text-decoration: none;
 }
 
-.btn-secondary:hover {
-  background-color: #121212;
+.btn-contour:hover {
+  background-color: var(--color-noir-profond);
   color: #ffffff;
 }
 
-/* Drawer & Modals */
+/* Cartes Produits */
+.meat-card {
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.meat-card:hover {
+  transform: translateY(-5px);
+  border-color: #bc9351;
+  box-shadow: 0 16px 36px -6px rgba(16, 16, 16, 0.12), 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.meat-card-media {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  background-color: #eee9df;
+  overflow: hidden;
+}
+
+.meat-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.meat-card:hover .meat-card-media img {
+  transform: scale(1.05);
+}
+
+.badge-tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+  border-radius: 3px;
+}
+
+.badge-tag-red {
+  background: var(--color-rouge-boucher);
+  color: #ffffff;
+}
+
+.badge-tag-dark {
+  background: var(--color-noir-profond);
+  color: #ffffff;
+}
+
+.badge-tag-gold {
+  background: var(--color-bronze-or);
+  color: #ffffff;
+}
+
+/* Onglets Découpe Bouchère */
+.cut-tab-btn {
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  padding: 14px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--color-gris-texte);
+  border-radius: 4px;
+}
+
+.cut-tab-btn:hover {
+  border-color: var(--color-rouge-boucher);
+  color: var(--color-rouge-boucher);
+}
+
+.cut-tab-btn.active {
+  background: var(--color-noir-profond);
+  color: #ffffff;
+  border-color: var(--color-noir-profond);
+}
+
+/* Panier Latéral */
 .cart-drawer-container {
   position: fixed;
   top: 0;
@@ -166,8 +270,8 @@ body {
   width: 100%;
   max-width: 440px;
   background: #ffffff;
-  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
-  z-index: 9999;
+  box-shadow: -10px 0 35px rgba(0, 0, 0, 0.25);
+  z-index: 99999;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -182,9 +286,9 @@ body {
 .modal-backdrop-custom {
   position: fixed;
   inset: 0;
-  background: rgba(18, 18, 18, 0.65);
+  background: rgba(16, 16, 16, 0.7);
   backdrop-filter: blur(4px);
-  z-index: 9998;
+  z-index: 99998;
   display: none;
 }
 
@@ -192,14 +296,14 @@ body {
   display: block;
 }
 
-/* Scrollbar */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #efebe2;
+  background: #f1ede3;
 }
 ::-webkit-scrollbar-thumb {
-  background: #c2bcb0;
+  background: #beb8ab;
   border-radius: 3px;
 }

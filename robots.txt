@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://flafage.github.io/dans-nos-pres-web/sitemap.xml
